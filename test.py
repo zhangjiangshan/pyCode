@@ -15,7 +15,6 @@ class ArrayTestCase(unittest.TestCase):
         array = [0,4,4,0,4,4,4,0,2]
         self.code.removeElement(array, 4) 
         assert array == [0,0,0,2], 'wrong ' + funcName
-
         array = [3,2,2,3]
         self.code.removeElement(array, 3) 
         assert array == [2,2], 'wrong ' + funcName
@@ -42,9 +41,36 @@ class ArrayTestCase(unittest.TestCase):
     def test_getPascalTriangleRow(self):
         funcName = sys._getframe().f_code.co_name
         print funcName
+        assert self.code.getPascalTriangleRow(2) == [1,2,1], 'wrong ' + funcName
         assert self.code.getPascalTriangleRow(1) == [1,1], 'wrong ' + funcName
         assert self.code.getPascalTriangleRow(4) == [1,4,6,4,1], 'wrong ' + funcName
-        print self.code.getPascalTriangleRow(21)
+
+    def test_mergeArray(self):
+        funcName = sys._getframe().f_code.co_name
+        print funcName
+        nums = [1,2,3,0,0,0]
+        self.code.mergeArray(nums, 3, [2,5,6],3)
+        assert nums == [1,2,2,3,5,6], 'wrong ' + funcName
+
+    def test_twoSum(self):
+        funcName = sys._getframe().f_code.co_name
+        print funcName
+        assert self.code.twoSum([3,2,4], 6) == [1,2], 'wrong ' + funcName
+
+    def test_threeSum(self):
+        funcName = sys._getframe().f_code.co_name
+        print funcName
+        result = self.code.threeSum([-1, 0, 1, 2, -1, -4]) 
+        print result
+        assert len(result) == 2 and [-1, 0, 1] in result and [-1, -1, 2] in result, 'wrong ' + funcName 
+
+    def test_threeSumClosest(self):
+        funcName = sys._getframe().f_code.co_name
+        print funcName
+        result = self.code.threeSumClosest([1,2,4,8,16,32,64,128], 82) 
+        print result
+        assert result == 82, 'wrong ' + funcName
+
     def tearDown(self):
         pass
 
