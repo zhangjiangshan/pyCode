@@ -381,7 +381,6 @@ class ArrayCode:
     Integers in each row are sorted in ascending from left to right.
     Integers in each column are sorted in ascending from top to bottom.'''
     def searchMatrix2(self, matrix, target):
-       
         row = len(matrix)
         if row == 0:
             return False
@@ -399,7 +398,46 @@ class ArrayCode:
             else: 
                 return True
         return False   
-       
+
+    '''Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.
+    Your algorithm's runtime complexity must be in the order of O(log n).
+    If the target is not found in the array, return [-1, -1].'''
+    def searchRange(self, nums, target):
+        from bisect import * 
+        index1 = bisect_left(nums, target)
+        if index1 >= len(nums) or nums[index1] != target:
+            return [-1, -1]
+        index2 = index1;
+        for i in range(index1+1, len(nums)):
+            if nums[i] == target:
+                index2 += 1
+            else :
+                break
+        return [index1, index2]
+        
+    '''Given a sorted array and a target value, return the index if the target is found. 
+    If not, return the index where it would be if it were inserted in order.
+    You may assume no duplicates in the array.'''
+    def searchInsert(self, nums, target):
+        start = 0
+        end = len(nums) - 1
+        while True:
+            if end - start <= 1:
+                if target <= nums[start]:
+                    return start
+                elif target > nums[end]:
+                    return end + 1
+                else:
+                    return end
+            mid = (start + end) / 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                end = mid
+            else:
+                start = mid
+
+
 
             
                 
