@@ -14,6 +14,7 @@ class ArrayTestCase(unittest.TestCase):
             print func.__name__
             return func(*args)
         return wrapper
+        
     @use_log
     def test_removeElement(self):
         array = [0,4,4,0,4,4,4,0,2]
