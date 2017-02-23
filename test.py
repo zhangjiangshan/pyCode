@@ -8,6 +8,9 @@ import sys
 class ArrayTestCase(unittest.TestCase):
     def setUp(self):
         self.code = PyCode.ArrayCode()
+        self.bit = PyCode.BitCode()
+        self.tree = PyCode.TreeCode()
+
 
     def use_log(func):
         def wrapper(*args):

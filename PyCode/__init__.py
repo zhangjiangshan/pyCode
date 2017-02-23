@@ -7,3 +7,5 @@
 # __all__ = [ basename(f)[:-3] for f in modules if isfile(f)]
 
 from ArrayCode import ArrayCode
+from BitCode import BitCode
+from TreeCode import TreeCode
