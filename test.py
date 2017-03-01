@@ -10,6 +10,7 @@ class ArrayTestCase(unittest.TestCase):
         self.code = PyCode.ArrayCode()
         self.bit = PyCode.BitCode()
         self.tree = PyCode.TreeCode()
+        self.dp = PyCode.DPCode()
 
 
     def use_log(func):
@@ -120,6 +121,45 @@ class ArrayTestCase(unittest.TestCase):
         assert self.code.searchInsert([1,3,5], 4) == 2, 'wrong ' + funcName 
         assert self.code.searchInsert([1,3], 2) == 1, 'wrong ' + funcName 
         assert self.code.searchInsert([1], 2) == 1, 'wrong ' + funcName 
+
+    @use_log
+    def test_isValidBST(self):
+        node = PyCode.TreeCode.TreeNode(2)
+        node.left = PyCode.TreeCode.TreeNode(1)
+        node.right = PyCode.TreeCode.TreeNode(3)
+        assert self.tree.isValidBST(node) == True, 'wrong ' + funcName 
+    
+    @use_log
+    def test_maxProfit(self):
+        assert self.dp.maxProfit([7,1,5]) == 4, 'wrong' 
+    
+    @use_log
+    def test_uniquePaths(self):
+         assert self.dp.uniquePaths(2, 2) == 2, 'wrong' 
+    
+    @use_log
+    def test_uniquePathsWithObstacles(self):
+        assert self.dp.uniquePathsWithObstacles([[0,1],[0,0]]) == 1, 'wrong'
+
+        assert self.dp.uniquePathsWithObstacles([[0],[0]]) == 1, 'wrong'
+        assert self.dp.uniquePathsWithObstacles([[0,0]]) == 1, 'wrong'
+
+        
+        assert self.dp.uniquePathsWithObstacles([[0,1]]) == 0, 'wrong'
+    
+    @use_log
+    def test_minimumTotal(self):
+        assert self.dp.minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]) == 11, 'wrong'
+        assert self.dp.minimumTotal([[1],[2,3]]) == 3, 'wrong'
+    
+    @use_log
+    def test_generateTrees(self):  
+        assert self.dp.generateTrees(0) == [], 'wrong'
+    
+    @use_log
+    def test_numSquares(self):  
+        assert self.dp.numSquares(12) == 3, 'wrong'
+        
 
     def tearDown(self):
         pass
