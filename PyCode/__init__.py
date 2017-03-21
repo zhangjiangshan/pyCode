@@ -10,3 +10,9 @@ from ArrayCode import ArrayCode
 from BitCode import BitCode
 from TreeCode import TreeCode
 from DPCode import DPCode
+from BackTrackingCode import BackTrackingCode
+from OtherCode import OtherCode
+from GreedyCode import GreedyCode
+from LinkedListCode import LinkedListCode
+
+

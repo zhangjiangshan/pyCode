@@ -11,6 +11,11 @@ class ArrayTestCase(unittest.TestCase):
         self.bit = PyCode.BitCode()
         self.tree = PyCode.TreeCode()
         self.dp = PyCode.DPCode()
+        self.bt = PyCode.BackTrackingCode()
+        self.other = PyCode.OtherCode()
+        self.linkedList = PyCode.LinkedListCode()
+
+
 
 
     def use_log(func):
@@ -159,7 +164,45 @@ class ArrayTestCase(unittest.TestCase):
     @use_log
     def test_numSquares(self):  
         assert self.dp.numSquares(12) == 3, 'wrong'
+    
+    @use_log
+    def test_subsets(self):
+        assert self.bt.subsets([1,2,3]) == [[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]], 'wrong'
         
+    @use_log
+    def test_permute(self):
+        assert self.bt.permute([1,2,3]) == [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]], 'wrong'
+    
+    @use_log
+    def test_reverse(self):
+        assert self.other.reverse(-123) == -321, 'wrong'
+        assert self.other.reverse(123) == 321, 'wrong'
+    
+    @use_log
+    def test_calculate(self):
+        assert self.other.calculate("14-3/2") == 13, 'wrong'
+        assert self.other.calculate("  30") == 30, 'wrong'
+        assert self.other.calculate("4  ") == 4, 'wrong'
+        assert self.other.calculate("1+2*3") == 7, 'wrong'
+        assert self.other.calculate("0/1") == 0, 'wrong'
+
+    @use_log 
+    def test_deleteDuplicates2(self):
+        node = PyCode.LinkedListCode.ListNode(1)
+        node.next = PyCode.LinkedListCode.ListNode(2)
+        node.next.next = PyCode.LinkedListCode.ListNode(2)
+        assert self.linkedList.deleteDuplicates2(node) == node, 'wrong'
+    
+    @use_log
+    def test_partition(self):
+         node = PyCode.LinkedListCode.ListNode(1)
+         node.next = PyCode.LinkedListCode.ListNode(2)
+    
+    @use_log
+    def test_copyRandomList(self):
+        node = PyCode.LinkedListCode.RandomListNode(-1)
+        node.next = PyCode.LinkedListCode.RandomListNode(-1)
+        self.linkedList.copyRandomList(node)
 
     def tearDown(self):
         pass
