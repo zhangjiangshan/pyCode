@@ -67,3 +67,52 @@ class BackTrackingCode:
                 stack.pop()
         loop(nums,[])
         return result
+    
+    '''search words II'''
+    def wordSearchII(self, board, words):
+        class Node:
+            def __init__(self):
+                self.dict = {}
+                self.word = None
+        root = Node() 
+        p = root
+        for word in words:
+            p = root
+            for c in word:
+                if c not in p.dict:
+                    p.dict[c] = Node()
+                p = p.dict[c]
+            p.word = word
+            
+        res = []
+        def find(p, i, j):
+            c = board[i][j]
+            if p.word != None:
+                res.append(p.word)
+                p.word = None
+            if c not in p.dict or c == '#':
+                return
+            temp = p.dict[c]
+            board[i][j] = '#'
+            if i - 1 >= 0:
+                find(temp, i-1, j)
+            if j - 1 >= 0:
+                find(temp, i, j-1)
+            if i + 1 < len(board):
+                find(temp, i+1, j)
+            if j + 1 < len(board[i]):
+                find(temp, i, j+1)
+            board[i][j] = c
+        
+        for i,a in enumerate(board):
+            for j,b in enumerate(a):
+                find(root, i, j)
+        return res
+
+
+        while low <= high:
+            mid = (low + high) / 2
+            if target < mid:
+                hight = mid -1 
+            else:
+                low = mid + 1

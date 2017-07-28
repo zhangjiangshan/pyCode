@@ -16,8 +16,6 @@ class ArrayTestCase(unittest.TestCase):
         self.linkedList = PyCode.LinkedListCode()
 
 
-
-
     def use_log(func):
         def wrapper(*args):
             print func.__name__
@@ -203,7 +201,11 @@ class ArrayTestCase(unittest.TestCase):
         node = PyCode.LinkedListCode.RandomListNode(-1)
         node.next = PyCode.LinkedListCode.RandomListNode(-1)
         self.linkedList.copyRandomList(node)
-
+    
+    @use_log
+    def test_wordSearchII(self):
+        assert self.bt.wordSearchII([['d','o','a','f'],['a','g','a','i'],['d','c','a','n']], {"dog","dad","dgdg","can","again"}) == ["dad","dog","again","can"], 'wrong'
+    
     def tearDown(self):
         pass
 
